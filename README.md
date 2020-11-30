@@ -139,7 +139,7 @@ CompletableFuture<TokenResponse> refreshTokenRequestFuture =
 
 **<p dir="rtl">5. برای دریافت اطلاعات کاربر که درخواست آن را در مرحله ۱ در <code>scope</code>ها داده‌اید، به روش زیر عمل کنید:</p>**
 
-```csharp
+```java
 UserInfoRequest userInfoRequest = UserInfoRequest.builder()
         .baseUrl(IAM_BASE_ADDRESS)                           
         .method(UserInfoRequest.Method.Get)             (1)
