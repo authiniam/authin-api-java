@@ -110,7 +110,7 @@ ObjectNode claims = TokenValidator.validate(
 <blockquote dir="rtl"> توجه: به هیچ عنوان بدون صحت‌سنجی، توکن‌های دریافتی را استفاده نکنید. توکن‌ها به معنی اعتبارنامه دسترسی به سامانه شما هستند. </blockquote>
 </br>
 
-**<p dir="rtl">4. پس  از اتمام فرایند احراز هویت یکی از توکن‌های دریافتی <code>refresh_token</code> است که سامانه شما با ارائه این توکن به سامانه احراز هویت آتین می‌تواند بدون مداخله کاربر توکن جدیدی دریافت کند. مکانیزم درخواست <code>refresh_token</code> بدین صورت است که در صورتی که عمر توکن فعلی کاربر به اتمام رسیده و توکن منقضی شده باشد،  سامانه شما با ارائه <code>refresh_token</code> دریافتی، توکن جدیدی را به دست می‌آورد.بدین منظور به روش زیر عمل کنید:</p>**
+**<p dir="rtl">4. پس  از اتمام فرایند احراز هویت یکی از توکن‌های دریافتی <code>refresh_token</code> است که سامانه شما با ارائه این توکن به سامانه احراز هویت آتین می‌تواند بدون مداخله کاربر توکن جدیدی دریافت کند. مکانیزم درخواست <code>refresh_token</code> بدین صورت است که در صورتی که عمر توکن فعلی کاربر به اتمام رسیده و توکن منقضی شده باشد،  سامانه شما با ارائه <code>refresh_token</code> دریافتی، توکن جدیدی را به دست می‌آورد. بدین منظور به روش زیر عمل کنید:</p>**
 
 ```java
 RefreshTokenRequest refreshTokenRequest = RefreshTokenRequest.builder()
@@ -136,8 +136,30 @@ CompletableFuture<TokenResponse> refreshTokenRequestFuture =
 <blockquote dir="rtl">- فراموش نکنید که توکن‌های دریافتی در این مرحله نیز باید صحت‌سنجی شوند.</blockquote>
 </br>
 
+**<p dir="rtl">5. دریافت توکن به روش <strong>Resource Owner Password Credentials Grant</strong> </p>**
+<blockquote dir="rtl">* توجه: استفاده از این روش تنها در مواقعی که هیچ روش دیگری قابل اجرا نبوده و به سامانه RP اعتماد کامل وجود دارد جایز است.</blockquote>
+</br>
 
-**<p dir="rtl">5. برای دریافت اطلاعات کاربر که درخواست آن را در مرحله ۱ در <code>scope</code>ها داده‌اید، به روش زیر عمل کنید:</p>**
+<p dir="rtl">در این روش به منظور دریافت <code>token</code> سامانه شما پس از دریافت نام کاربری و رمز عبور کاربر اقدام به ارسال موارد دریافتی با استفاده از مکانیزم <code>POST</code> و به صورت <code>x-www-form-urlencoded</code> به <code>Token Endpoint</code> سامانه احراز هویت آتین کرده و در پاسخ توکن را دریافت می‌نماید. بدین منظور به روش زیر عمل کنید:</p>
+</br>
+
+```java
+ResourceOwnerRequest resourceOwnerRequest = ResourceOwnerRequest.builder()
+        .baseUrl(IAM_BASE_ADDRESS)
+        .clientId(YOUR_CLIENT_ID)
+        .clientSecret(YOUR_CLIENT_SECRET)
+        .username(USERNAME)
+        .password(PASSWORD)
+        .build();
+
+CompletableFuture<TokenResponse> resourceOwnerRequestFuture = resourceOwnerRequest.execute();
+```
+
+<blockquote dir="rtl">- فراموش نکنید که توکن‌ دریافتی در این مرحله نیز باید صحت‌سنجی شود.</blockquote>
+</br>
+
+**<p dir="rtl">6. برای دریافت اطلاعات کاربر که درخواست آن را در مرحله ۱ در <code>scope</code>ها داده‌اید، به روش زیر عمل کنید:</p>**
+
 
 ```java
 UserInfoRequest userInfoRequest = UserInfoRequest.builder()
@@ -153,7 +175,7 @@ CompletableFuture<UserInfoResponse> userInfoRequestFuture = userInfoRequest.exec
 </ol>
 </br>
 
-**<p dir="rtl">5. فرآیند خروج کاربر:</p>**
+**<p dir="rtl">7. فرآیند خروج کاربر:</p>**
 
 <p dir="rtl">فرآیند خروج کاربر به دو حالت زیر می‌تواند صورت پذیرد:</p>
 
