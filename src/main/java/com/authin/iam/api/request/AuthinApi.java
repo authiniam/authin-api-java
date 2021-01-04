@@ -35,4 +35,14 @@ interface AuthinApi {
             @Field("client_id") String clientId,
             @Field("client_secret") String clientSecret
     );
+
+    @FormUrlEncoded
+    @POST("/api/v1/oauth/token")
+    Call<TokenResponse> getTokenInResourceOwnerManner(
+            @Field("client_id") String clientId,
+            @Field("client_secret") String clientSecret,
+            @Field("username") String username,
+            @Field("password") String password,
+            @Field("grant_type") String grantType
+    );
 }
