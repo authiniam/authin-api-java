@@ -6,7 +6,7 @@ import lombok.*;
 @Getter
 @Setter(AccessLevel.PACKAGE)
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserInfoResponse {
 
     //region Private Fields

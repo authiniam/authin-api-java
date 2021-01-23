@@ -5,7 +5,7 @@ import lombok.*;
 
 @Getter
 @Setter(AccessLevel.PACKAGE)
-@JsonInclude(JsonInclude.Include.NON_EMPTY)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class TokenResponse {
 
     //region Private Fields
