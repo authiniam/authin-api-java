@@ -3,7 +3,7 @@
 
 <h2 dir="rtl">راهنمای استفاده از authin-api-java در Java</h2>
 
-**<blockquote dir="rtl"> ابتدا jar فایل <code>authin-api-java-1.0.0-jar-with-dependencies.jar</code> که در قسمت <a href="https://github.com/authiniam/authin-api-java/releases">releases</a> وجود دارد را به پروژه خود اضافه کنید.</blockquote>**
+**<blockquote dir="rtl"> ابتدا اخرین نسخه JAR فایل منتشر شده که در قسمت <a href="https://github.com/authiniam/authin-api-java/releases">releases</a> وجود دارد را به پروژه خود اضافه کنید.</blockquote>**
 
 <br/>
 
