@@ -5,6 +5,7 @@ import lombok.*;
 
 @Getter
 @Setter(AccessLevel.PACKAGE)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class RsaJwk extends Jwk {
 
     //region Private Fields
