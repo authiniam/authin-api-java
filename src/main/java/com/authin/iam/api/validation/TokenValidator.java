@@ -19,7 +19,7 @@ public class TokenValidator {
         JoseHeader joseHeader = deserializeJoseHeader(jws.getHeader());
         validateJoseHeaders(joseHeader);
 
-        RsaJwk jwk = (RsaJwk) jwks.getKeys().get(0);
+        RsaJwk jwk = jwks.getKeys().get(0);
         PublicKey publicKey = convertToPublicKey(jwk);
         validateSignature(publicKey, jws);
 
